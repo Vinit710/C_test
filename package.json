@@ -1,0 +1,14 @@
+{
+  "name": "simple-page",
+  "version": "1.0.0",
+  "main": "serve.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node serve.js",
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
+

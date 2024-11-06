@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inspirational Journey</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #7ab5f1;
+    }
+    .parallax {
+      background-image: url('https://source.unsplash.com/random/1920x1080?nature');
+      height: 100vh;
+      background-attachment: fixed;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+    .quote-container {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 15px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+    .quote {
+      font-size: 1.5em;
+      font-style: italic;
+      color: #333;
+    }
+    .author {
+      font-size: 1em;
+      color: #666;
+    }
+    #motivationalQuote {
+      transition: opacity 0.5s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Bruh</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="#home">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#quote">College</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#motivation">Games</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section id="home" class="parallax d-flex align-items-center justify-content-center">
+    <div class="container text-center text-white">
+      <h1 class="display-4 mb-4">Welcome </h1>
+      <p class="lead mb-4">Scroll down to discover.</p>
+      
+    </div>
+  </section>
+
+  <section id="quote" class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-8">
+          <div class="quote-container p-5 text-center">
+            <p class="quote">
+              "If you are here then: What are you doing? Stop wasting time gooo study, and thanks for visiting."
+            </p>
+            <span class="author d-block mt-3">~ Vinit</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="motivation" class="py-5 bg-light">
+    <div class="container text-center">
+      <h2 class="mb-4">Submit your quotes</h2>
+      <div id="motivationalQuote" class="mb-4">
+        
+      </div>
+      <button id="newQuoteBtn" class="btn btn-primary">Click</button>
+    </div>
+  </section>
+
+  <footer class="bg-dark text-white text-center py-3">
+    <div class="container">
+      <p>&copy; 2023 . All rights reserved.</p>
+      <div class="mt-2">
+        <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+        <a href="#" class="text-white"><i class="fab fa-linkedin-in"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const quotes = [
+      { text: "The only way to do great work is to love what you do.", author: "Steve Jobs" },
+      { text: "Believe you can and you're halfway there.", author: "Theodore Roosevelt" },
+      { text: "Success is not final, failure is not fatal: it is the courage to continue that counts.", author: "Winston Churchill" },
+      { text: "The future belongs to those who believe in the beauty of their dreams.", author: "Eleanor Roosevelt" },
+      { text: "Strive not to be a success, but rather to be of value.", author: "Albert Einstein" }
+    ];
+
+    const quoteElement = document.getElementById('motivationalQuote');
+    const newQuoteBtn = document.getElementById('newQuoteBtn');
+
+    function getRandomQuote() {
+      return quotes[Math.floor(Math.random() * quotes.length)];
+    }
+
+    function displayQuote() {
+      const { text, author } = getRandomQuote();
+      quoteElement.style.opacity = 0;
+      setTimeout(() => {
+        quoteElement.innerHTML = `
+          <p class="lead">"${text}"</p>
+          <p class="author">- ${author}</p>
+        `;
+        quoteElement.style.opacity = 1;
+      }, 500);
+    }
+
+    newQuoteBtn.addEventListener('click', displayQuote);
+
+    // Smooth scrolling for navigation links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+  </script>
+</body>
+</html>
